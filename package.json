@@ -1,0 +1,27 @@
+{
+  "name": "one-word-story",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-types": "cd packages/types && npm install",
+    "copy-types": "cpy --flat packages/types/src/index.ts apps/server/src/sharedTypes && cpy --flat packages/types/src/index.ts apps/client/src/sharedTypes",
+    "start-dev-client": "cd apps/client && npm start",
+    "build-client": "cd apps/client && npm run build && cd ../../ && cpy apps/client/build/** apps/server/public",
+    "build-server": "cd apps/server && npm run build",
+    "start-dev-server": "cd apps/server && npm run dev",
+    "build": "npm install && npm run build-types && npm run copy-types && npm run build-server && npm run build-client",
+    "start": "NODE_ENV=production node ./server/index.js",
+    "dev": "concurrently \"npm run start-dev-client\" \"npm run start-dev-server\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "cpy-cli": "^5.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "apps/*"
+  ]
+}
