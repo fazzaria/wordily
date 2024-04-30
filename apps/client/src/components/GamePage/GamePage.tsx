@@ -11,6 +11,7 @@ const GamePage = () => {
     <Grid
       container
       item
+      md={6}
       xs={12}
       alignItems="center"
       justifyContent="center"

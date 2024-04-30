@@ -2,19 +2,19 @@ import { useCallback, useContext } from "react";
 import GameContext from "../context/GameContext";
 
 const useRequest = () => {
-  const { setLoading, setSnackBarMessage } = useContext(GameContext);
+  const { setLoading, setSnackBar } = useContext(GameContext);
   return useCallback(
     (fn: Function) => {
       setLoading(true);
       try {
         fn();
       } catch (error: any) {
-        setSnackBarMessage(error);
+        setSnackBar(error, "error");
       } finally {
         setLoading(false);
       }
     },
-    [setLoading, setSnackBarMessage]
+    [setLoading, setSnackBar]
   );
 };
 

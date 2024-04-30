@@ -2,7 +2,6 @@ import { useContext } from "react";
 import GameContext from "../../../context/GameContext";
 import ReadyButton from "../../ReadyButton/ReadyButton";
 import Input from "./Input";
-import Feedback from "./Feedback";
 
 const Controls = () => {
   const { currentPlayerName, room } = useContext(GameContext);
@@ -16,7 +15,7 @@ const Controls = () => {
   if (!gameStarted) {
     return <ReadyButton ready={!!ready} />;
   }
-  return playerTurn ? <Input /> : <Feedback />;
+  return playerTurn ? <Input /> : null;
 };
 
 export default Controls;

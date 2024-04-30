@@ -7,6 +7,8 @@ const startGame = (roomId: string) => {
   const newPlayers = room.players.map((player) => ({
     ...player,
     ready: false,
+    turnActive: false,
+    votingToEnd: false,
   }));
   const startingPlayerIndex = randomIndex(newPlayers);
   newPlayers[startingPlayerIndex].turnActive = true;

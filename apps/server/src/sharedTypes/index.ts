@@ -1,6 +1,22 @@
+export const textColors = [
+  "#b15928",
+  "#ffff99",
+  "#6a3d9a",
+  "#cab2d6",
+  "#ff7f00",
+  "#fdbf6f",
+  "#e31a1c",
+  "#fb9a99",
+  "#33a02c",
+  "#b2df8a",
+  "#1f78b4",
+  "#a6cee3",
+];
+
 export type Player = {
   playerName: string;
   ready: boolean;
+  textColor: string;
   turnActive: boolean;
   votingToEnd: boolean;
 };
@@ -35,6 +51,7 @@ export enum ServerToClientEventName {
   ROOM_JOINED = "room-joined",
   ROOM_LEFT = "room-left",
   ROOM_UPDATED = "room-updated",
+  VOTED_TO_END = "voted-to-end",
 }
 
 export interface ServerToClientEvents {
@@ -43,6 +60,7 @@ export interface ServerToClientEvents {
   [ServerToClientEventName.ROOM_JOINED]: (room: Room) => void;
   [ServerToClientEventName.ROOM_LEFT]: () => void;
   [ServerToClientEventName.ROOM_UPDATED]: (room: Room) => void;
+  [ServerToClientEventName.VOTED_TO_END]: (playerName: string) => void;
 }
 
 export interface ClientToServerEvents {
@@ -56,7 +74,7 @@ export interface ClientToServerEvents {
   [ClientToServerEventName.TOGGLE_READY]: () => void;
 }
 
-export interface SocketData extends Player {
+export interface SocketData extends Omit<Player, "textColor"> {
   roomId: string;
 }
 

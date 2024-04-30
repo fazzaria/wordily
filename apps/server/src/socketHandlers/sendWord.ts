@@ -1,9 +1,11 @@
 import rooms from "../const/rooms";
-import { Room, SlashCommands } from "../sharedTypes";
+import { Room, ServerToClientEventName, SlashCommands } from "../sharedTypes";
 import { Socket } from "socket.io";
 import addWordValidation from "./validations/addWordValidation";
 import refreshRoom from "./roomFunctions/refreshRoom";
 import passTurn from "./roomFunctions/passTurn";
+import io from "../const/io";
+import { ServerType } from "../server/types";
 
 const sendWord = (socket: Socket, newWord: string) => {
   addWordValidation(socket, newWord);
@@ -11,7 +13,7 @@ const sendWord = (socket: Socket, newWord: string) => {
   const { playerName, roomId } = socket.data;
   const room = rooms.get(roomId);
 
-  const newRoom = { ...room };
+  const newRoom: Room = { ...room };
 
   switch (newWord) {
     case SlashCommands.PARAGRAPH_BREAK:
@@ -20,7 +22,7 @@ const sendWord = (socket: Socket, newWord: string) => {
     case SlashCommands.PASS_TURN:
       break;
     case SlashCommands.VOTE_TO_END:
-      const newPlayers = [...room.players];
+      let newPlayers = [...newRoom.players];
       const currentPlayer = newPlayers.find(
         (player) => player.playerName === socket.data.playerName
       );
@@ -33,7 +35,15 @@ const sendWord = (socket: Socket, newWord: string) => {
       });
       if (endingStory) {
         newRoom.gameStarted = false;
+        newPlayers = newPlayers.map((player) => ({
+          ...player,
+          votingToEnd: false,
+        }));
       }
+      newRoom.players = newPlayers;
+      (io as ServerType)
+        .in(roomId)
+        .emit(ServerToClientEventName.VOTED_TO_END, playerName);
       break;
     default:
       const newStory = [...room.story];

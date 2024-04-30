@@ -4,10 +4,11 @@ import { Alert, IconButton, Snackbar } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const AppSnackbar = () => {
-  const { setSnackBarMessage, snackBarMessage } = useContext(GameContext);
+  const { setSnackBar, snackBarMessage, snackBarSeverity } =
+    useContext(GameContext);
 
   const handleClose = () => {
-    setSnackBarMessage("");
+    setSnackBar("", snackBarSeverity);
   };
 
   const action = (
@@ -31,7 +32,7 @@ const AppSnackbar = () => {
       <Alert
         action={action}
         icon={false}
-        severity="error"
+        severity={snackBarSeverity}
         sx={{ width: "100%" }}
       >
         {snackBarMessage}

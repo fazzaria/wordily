@@ -12,7 +12,7 @@ const Instructions = () => {
     <>
       <Typography sx={{ marginBottom: 2 }}>
         <span style={{ fontWeight: "bold" }}>How to Play:</span> On your turn,
-        add a word to the ongoing story. You may also add punctuation or enter
+        add a word and/or punctuation to the ongoing story. You may also enter
         one of the commands below.
       </Typography>
       {commands.map(({ command, description }) => (

@@ -6,7 +6,6 @@ import {
   UNKNOWN_ERROR,
 } from "../../socketHandlers/errorHandling/const";
 
-// todo: add punctuation validation
 const addWordValidation = (socket: SocketType, newWord: string) => {
   if (!newWord || typeof newWord !== "string") {
     throw INVALID_WORD;

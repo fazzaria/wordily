@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Room } from "../sharedTypes";
+import { AlertColor } from "@mui/material";
 
 export interface GameContextType {
   currentPlayerName: string;
@@ -8,6 +9,7 @@ export interface GameContextType {
   setCurrentPlayerName: Dispatch<SetStateAction<string>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setRoom: Dispatch<SetStateAction<Room | null>>;
-  setSnackBarMessage: Dispatch<SetStateAction<string>>;
+  setSnackBar: (message: string, severity: AlertColor) => void;
   snackBarMessage: string;
+  snackBarSeverity: AlertColor;
 }

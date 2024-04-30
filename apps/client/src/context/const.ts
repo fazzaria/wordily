@@ -7,8 +7,9 @@ const defaultGameContextValue: GameContextType = {
   setCurrentPlayerName: () => null,
   setLoading: () => null,
   setRoom: () => null,
-  setSnackBarMessage: () => null,
+  setSnackBar: () => null,
   snackBarMessage: "",
+  snackBarSeverity: "info",
 };
 
 export default defaultGameContextValue;

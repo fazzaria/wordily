@@ -6,7 +6,7 @@ import GameContext from "../../context/GameContext";
 import useRequest from "../../utils/useRequest";
 
 const HomePage = () => {
-  const { loading, setCurrentPlayerName, setSnackBarMessage } =
+  const { loading, setCurrentPlayerName, setSnackBar } =
     useContext(GameContext);
   const request = useRequest();
   const [joinRoomCode, setJoinRoomCode] = useState("");
@@ -14,7 +14,7 @@ const HomePage = () => {
 
   const validateForm = () => {
     if (!playerName) {
-      setSnackBarMessage("Please enter your name.");
+      setSnackBar("Please enter your name.", "error");
       return false;
     }
     return true;
@@ -28,7 +28,7 @@ const HomePage = () => {
 
   const handleJoinGame = () => {
     if (!joinRoomCode) {
-      setSnackBarMessage("Please enter a room code to join.");
+      setSnackBar("Please enter a room code to join.", "error");
     } else if (validateForm()) {
       request(() => joinRoom(playerName, joinRoomCode));
     }
