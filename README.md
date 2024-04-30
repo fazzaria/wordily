@@ -1,0 +1,1 @@
+wordily is a mobile party game based on the improv concept of a "one word story" - going around in a circle and telling a story by having each member of the group add one word to it. Similar to Jackbox, it's easy to start up a game and invite friends with a 4-letter code.
