@@ -1,4 +1,4 @@
-import { server } from "server";
+import { server } from "../server";
 import { ServerType } from "../server/types";
 import { Server } from "socket.io";
 import isProd from "../utils/isProd";

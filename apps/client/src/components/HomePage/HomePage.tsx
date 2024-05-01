@@ -1,4 +1,4 @@
-import { Button, Divider, Grid, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 import createRoom from "../../socketEmitters/createRoom";
 import joinRoom from "../../socketEmitters/joinRoom";

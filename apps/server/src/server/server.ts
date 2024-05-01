@@ -1,7 +1,7 @@
 import express from "express";
 import http from "http";
 import path from "path";
-//import loadRoutes from "routes/api/loadRoutes";
+// import loadRoutes from "../routes/api/loadRoutes";
 import { fileURLToPath } from "url";
 
 const app = express();
