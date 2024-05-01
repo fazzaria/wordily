@@ -7,7 +7,7 @@ import { nanoid } from "nanoid";
 import addPlayer from "./roomFunctions/addPlayer";
 import addRoom from "./roomFunctions/addRoom";
 import createRoomValidation from "./validations/createRoomValidation";
-import { ROOM_CREATE_ERROR } from "./errorHandling/const";
+import { ROOM_CREATE_ERROR } from "../const/messages";
 import initializeSocket from "./roomFunctions/initializeSocket";
 
 const createRoom = (socket: SocketType, playerName: string) => {

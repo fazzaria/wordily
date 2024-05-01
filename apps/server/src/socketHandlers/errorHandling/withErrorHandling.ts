@@ -1,6 +1,6 @@
 import { SocketType } from "../../server/types";
 import sendErrorMessage from "./sendErrorMessage";
-import { UNKNOWN_ERROR } from "./const";
+import { UNKNOWN_ERROR } from "../../const/messages";
 
 const withErrorHandling = (socket: SocketType, fn: Function) => {
   try {

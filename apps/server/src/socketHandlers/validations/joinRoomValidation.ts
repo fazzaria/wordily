@@ -7,7 +7,7 @@ import {
   NON_UNIQUE_PLAYER_NAME,
   ROOM_NOT_FOUND,
   UNKNOWN_ERROR,
-} from "../../socketHandlers/errorHandling/const";
+} from "../../const/messages";
 
 // return error message if invalid, or an empty string if valid
 const joinRoomValidation = (

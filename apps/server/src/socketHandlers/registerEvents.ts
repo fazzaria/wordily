@@ -8,6 +8,8 @@ import sendWord from "./sendWord";
 import toggleReady from "./toggleReady";
 import withErrorHandling from "./errorHandling/withErrorHandling";
 import { DisconnectReason } from "socket.io";
+import voteToEnd from "./voteToEnd";
+import handlePassTurn from "./handlePassTurn";
 
 const registerEvents = (io: ServerType) => {
   io.on("connect", (socket: SocketType) => {
@@ -28,11 +30,17 @@ const registerEvents = (io: ServerType) => {
     socket.on(ClientToServerEventName.LEAVE_ROOM, () =>
       withErrorHandling(socket, () => leaveRoom(socket))
     );
+    socket.on(ClientToServerEventName.PASS_TURN, (command: string) => {
+      withErrorHandling(socket, () => handlePassTurn(socket, command));
+    });
     socket.on(ClientToServerEventName.SEND_WORD, (newWord: string) => {
       withErrorHandling(socket, () => sendWord(socket, newWord));
     });
     socket.on(ClientToServerEventName.TOGGLE_READY, () => {
       withErrorHandling(socket, () => toggleReady(socket));
+    });
+    socket.on(ClientToServerEventName.VOTE_TO_END, (command: string) => {
+      withErrorHandling(socket, () => voteToEnd(socket, command));
     });
   });
 };

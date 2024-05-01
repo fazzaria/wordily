@@ -6,7 +6,7 @@ import useRoomJoined from "./useRoomJoined";
 import useRoomLeft from "./useRoomLeft";
 import useRoomUpdated from "./useRoomUpdated";
 import useError from "./useError";
-import useVotedToEnd from "./useVotedToEnd";
+import useInfo from "./useInfo";
 
 const useRegisterEvents = () => {
   const errorFn = useError();
@@ -14,7 +14,7 @@ const useRegisterEvents = () => {
   const roomJoined = useRoomJoined();
   const roomLeft = useRoomLeft();
   const roomUpdated = useRoomUpdated();
-  const votedToEnd = useVotedToEnd();
+  const infoFn = useInfo();
 
   useEffect(() => {
     socket.on(ServerToClientEventName.ERROR, errorFn);
@@ -52,11 +52,11 @@ const useRegisterEvents = () => {
   }, [roomUpdated]);
 
   useEffect(() => {
-    socket.on(ServerToClientEventName.VOTED_TO_END, votedToEnd);
+    socket.on(ServerToClientEventName.INFO, infoFn);
     return () => {
-      socket.off(ServerToClientEventName.VOTED_TO_END, votedToEnd);
+      socket.off(ServerToClientEventName.INFO, infoFn);
     };
-  }, [votedToEnd]);
+  }, [infoFn]);
 };
 
 export default useRegisterEvents;

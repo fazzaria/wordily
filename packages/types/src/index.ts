@@ -39,28 +39,30 @@ export enum ClientToServerEventName {
   DISCONNECT = "disconnect",
   JOIN_ROOM = "join-room",
   LEAVE_ROOM = "leave-room",
+  PASS_TURN = "pass-turn",
   SEND_WORD = "send-word",
   SET_NAME = "set-name",
   TOGGLE_READY = "toggle-ready",
+  VOTE_TO_END = "vote-to-end",
 }
 
 export enum ServerToClientEventName {
   ERROR = "error",
+  INFO = "info",
   NAME_SET = "name-set",
   ROOM_CREATED = "room-created",
   ROOM_JOINED = "room-joined",
   ROOM_LEFT = "room-left",
   ROOM_UPDATED = "room-updated",
-  VOTED_TO_END = "voted-to-end",
 }
 
 export interface ServerToClientEvents {
   [ServerToClientEventName.ERROR]: (errorMessage: string) => void;
+  [ServerToClientEventName.INFO]: (infoMessage: string) => void;
   [ServerToClientEventName.ROOM_CREATED]: (room: Room) => void;
   [ServerToClientEventName.ROOM_JOINED]: (room: Room) => void;
   [ServerToClientEventName.ROOM_LEFT]: () => void;
   [ServerToClientEventName.ROOM_UPDATED]: (room: Room) => void;
-  [ServerToClientEventName.VOTED_TO_END]: (playerName: string) => void;
 }
 
 export interface ClientToServerEvents {
@@ -70,7 +72,9 @@ export interface ClientToServerEvents {
     roomCode: string
   ) => void;
   [ClientToServerEventName.LEAVE_ROOM]: () => void;
+  [ClientToServerEventName.PASS_TURN]: (command: string) => void;
   [ClientToServerEventName.SEND_WORD]: (newWord: string) => void;
+  [ClientToServerEventName.VOTE_TO_END]: (command: string) => void;
   [ClientToServerEventName.TOGGLE_READY]: () => void;
 }
 

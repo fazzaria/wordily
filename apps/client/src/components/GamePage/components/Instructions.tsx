@@ -1,13 +1,21 @@
 import { Typography } from "@mui/material";
 import { SlashCommands } from "../../../sharedTypes";
-
-const commands: { command: SlashCommands; description: string }[] = [
-  { command: SlashCommands.PARAGRAPH_BREAK, description: "New Paragraph" },
-  { command: SlashCommands.PASS_TURN, description: "Pass Turn" },
-  { command: SlashCommands.VOTE_TO_END, description: "Vote to End Story" },
-];
+import useCurrentPlayer from "../../../utils/useCurrentPlayer";
 
 const Instructions = () => {
+  const currentPlayer = useCurrentPlayer();
+
+  const votedToEnd = currentPlayer?.votingToEnd;
+
+  const commands: { command: SlashCommands; description: string }[] = [
+    { command: SlashCommands.PARAGRAPH_BREAK, description: "New Paragraph" },
+    { command: SlashCommands.PASS_TURN, description: "Pass Turn" },
+    {
+      command: SlashCommands.VOTE_TO_END,
+      description: votedToEnd ? "Vote to Continue Story" : "Vote to End Story",
+    },
+  ];
+
   return (
     <>
       <Typography sx={{ marginBottom: 2 }}>

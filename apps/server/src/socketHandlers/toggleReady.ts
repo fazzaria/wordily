@@ -4,7 +4,8 @@ import { Room } from "../sharedTypes";
 import toggleReadyValidation from "./validations/toggleReadyValidation";
 import startGame from "./roomFunctions/startGame";
 import refreshRoom from "./roomFunctions/refreshRoom";
-import { UNKNOWN_ERROR } from "./errorHandling/const";
+import { GAME_STARTED, UNKNOWN_ERROR } from "../const/messages";
+import sendInfoMessage from "./roomFunctions/sendInfoMessage";
 
 const toggleReady = (socket: SocketType) => {
   toggleReadyValidation(socket);
@@ -35,6 +36,7 @@ const toggleReady = (socket: SocketType) => {
   });
   if (shouldStartGame) {
     startGame(roomId);
+    sendInfoMessage(roomId, GAME_STARTED);
   }
   refreshRoom(roomId);
 };

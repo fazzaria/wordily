@@ -2,14 +2,14 @@ import { useContext } from "react";
 import GameContext from "../../../context/GameContext";
 import ReadyButton from "../../ReadyButton/ReadyButton";
 import Input from "./Input";
+import useCurrentPlayer from "../../../utils/useCurrentPlayer";
 
 const Controls = () => {
-  const { currentPlayerName, room } = useContext(GameContext);
-  const player = room?.players.find(
-    ({ playerName }) => playerName === currentPlayerName
-  );
-  const playerTurn = player?.turnActive;
-  const ready = player?.ready;
+  const { room } = useContext(GameContext);
+  const currentPlayer = useCurrentPlayer();
+
+  const playerTurn = currentPlayer?.turnActive;
+  const ready = currentPlayer?.ready;
   const gameStarted = room?.gameStarted;
 
   if (!gameStarted) {

@@ -1,14 +1,18 @@
-import { Link } from "@mui/material";
+import { Grid, Link, Typography } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <>
-      <Link component={RouterLink} to="/">
-        Back to Home
-      </Link>
-      <p>Page Not Found</p>
-    </>
+    <Grid container justifyContent="center" justifyItems="center" spacing={1}>
+      <Grid item xs={12}>
+        <Typography align="center">Page Not Found</Typography>
+      </Grid>
+      <Grid item>
+        <Link component={RouterLink} to="/">
+          Back to Home
+        </Link>
+      </Grid>
+    </Grid>
   );
 };
 

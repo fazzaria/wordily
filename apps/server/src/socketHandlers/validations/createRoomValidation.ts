@@ -1,8 +1,5 @@
 import { SocketType } from "../../server/types";
-import {
-  INVALID_PLAYER_NAME,
-  UNKNOWN_ERROR,
-} from "../../socketHandlers/errorHandling/const";
+import { INVALID_PLAYER_NAME, UNKNOWN_ERROR } from "../../const/messages";
 
 const createRoomValidation = (socket: SocketType, playerName: string) => {
   if (!socket) {

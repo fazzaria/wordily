@@ -1,4 +1,4 @@
-import { Button, Grid, TextField } from "@mui/material";
+import { Button, Divider, Grid, TextField, Typography } from "@mui/material";
 import { useContext, useState } from "react";
 import createRoom from "../../socketEmitters/createRoom";
 import joinRoom from "../../socketEmitters/joinRoom";
@@ -45,7 +45,12 @@ const HomePage = () => {
   };
 
   return (
-    <Grid container item spacing={1}>
+    <Grid container item spacing={2}>
+      <Grid item xs={12}>
+        <Typography align="center" paragraph variant="h4">
+          wordily
+        </Typography>
+      </Grid>
       <Grid item xs={12}>
         <TextField
           autoFocus
@@ -68,21 +73,21 @@ const HomePage = () => {
             setJoinRoomCode(e.target.value.toUpperCase());
           }}
           onKeyDown={handleKeyDown}
-          placeholder="Room Code"
+          placeholder="Enter Room Code"
           value={joinRoomCode}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
         <Button
           fullWidth
           disabled={loading}
           onClick={handleJoinGame}
           variant="contained"
         >
-          Enter Game
+          Join Game
         </Button>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={6}>
         <Button
           color="secondary"
           disabled={loading}
@@ -90,7 +95,7 @@ const HomePage = () => {
           onClick={handleCreateRoom}
           variant="contained"
         >
-          {loading ? "Loading..." : "Start New Game"}
+          New Game
         </Button>
       </Grid>
     </Grid>

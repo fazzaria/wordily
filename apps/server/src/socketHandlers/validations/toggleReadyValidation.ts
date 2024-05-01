@@ -1,6 +1,6 @@
 import rooms from "../../const/rooms";
 import { SocketType } from "../../server/types";
-import { UNKNOWN_ERROR } from "../../socketHandlers/errorHandling/const";
+import { UNKNOWN_ERROR } from "../../const/messages";
 
 const toggleReadyValidation = (socket: SocketType) => {
   if (!socket) {

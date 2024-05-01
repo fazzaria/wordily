@@ -2,7 +2,7 @@ import rooms from "../../const/rooms";
 import { Room } from "../../sharedTypes";
 import deleteRoom from "./deleteRoom";
 import { SocketType } from "../../server/types";
-import { UNKNOWN_ERROR } from "../../socketHandlers/errorHandling/const";
+import { UNKNOWN_ERROR } from "../../const/messages";
 import socketIdToPlayerName from "../../const/socketIdToPlayerName";
 import passTurn from "./passTurn";
 

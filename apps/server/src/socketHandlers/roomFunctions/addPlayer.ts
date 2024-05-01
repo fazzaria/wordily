@@ -1,7 +1,7 @@
 import { Room, textColors } from "../../sharedTypes";
 import { SocketType } from "../../server/types";
 import rooms from "../../const/rooms";
-import { UNKNOWN_ERROR } from "../errorHandling/const";
+import { UNKNOWN_ERROR } from "../../const/messages";
 import socketIdToPlayerName from "../../const/socketIdToPlayerName";
 import randomIndex from "../../utils/randomIndex";
 

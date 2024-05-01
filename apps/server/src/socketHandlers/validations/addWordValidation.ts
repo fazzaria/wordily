@@ -1,10 +1,7 @@
 import socketIdToPlayerName from "../../const/socketIdToPlayerName";
 import rooms from "../../const/rooms";
 import { SocketType } from "../../server/types";
-import {
-  INVALID_WORD,
-  UNKNOWN_ERROR,
-} from "../../socketHandlers/errorHandling/const";
+import { INVALID_WORD, UNKNOWN_ERROR } from "../../const/messages";
 
 const addWordValidation = (socket: SocketType, newWord: string) => {
   if (!newWord || typeof newWord !== "string") {
