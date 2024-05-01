@@ -10,7 +10,7 @@
     "build-client": "cd apps/client && npm run build && cd ../../ && cpy apps/client/build/** apps/server/public",
     "build-server": "cd apps/server && npm run build",
     "start-dev-server": "cd apps/server && npm run dev",
-    "build": "npm install && npm run build-types && npm run copy-types && npm run build-server && npm run build-client",
+    "build": "npm install && npm run build-server && npm run build-client",
     "start": "tsx apps/server/src/index.ts",
     "build-and-start": "npm run build && npm start",
     "dev": "concurrently \"npm run start-dev-client\" \"npm run start-dev-server\""
